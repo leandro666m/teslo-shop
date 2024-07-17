@@ -1,7 +1,7 @@
 import { titleFont } from "@/config/font";
 
 
-export default function Home() {
+export default function NewAccountPage() {
 
   return (
     <div className="">
