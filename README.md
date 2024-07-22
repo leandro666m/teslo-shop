@@ -34,4 +34,6 @@ Open [http://localhost:3000](http://localhost:3000)
 [React Icons](https://react-icons.github.io/react-icons/), 
 [Zustand](https://zustand-demo.pmnd.rs/), 
 [clsx](https://nextjs.org/learn-pages-router/basics/assets-metadata-css/styling-tips), 
+[Swiper](https://swiperjs.com/), 
+
 
