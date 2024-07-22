@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Tecnologias aplicadas:
 
-[React Icons](https://react-icons.github.io/react-icons/)
-[Zustand](https://zustand-demo.pmnd.rs/)
-[clsx](https://nextjs.org/learn-pages-router/basics/assets-metadata-css/styling-tips)
+[React Icons](https://react-icons.github.io/react-icons/), 
+[Zustand](https://zustand-demo.pmnd.rs/), 
+[clsx](https://nextjs.org/learn-pages-router/basics/assets-metadata-css/styling-tips), 
 
