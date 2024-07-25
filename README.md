@@ -12,6 +12,16 @@ SSR, SSG, CSR, ISR, Middlewares, Rutas dinámicas, Next API, Next Auth, Material
    Motivación:
       Crear una copia del e-commerce de [Tesla](https://shop.tesla.com/es_es/)
 
+
+## Tecnologias aplicadas:
+
+[React Icons](https://react-icons.github.io/react-icons/), 
+[Zustand](https://zustand-demo.pmnd.rs/), 
+[clsx](https://nextjs.org/learn-pages-router/basics/assets-metadata-css/styling-tips), 
+[Swiper](https://swiperjs.com/), 
+
+
+
 ## Getting Started
 
    Node: ( version necesaria: 18 )
@@ -20,20 +30,13 @@ nvm install 18.17.0
 nvm use 18.17.0
 ```
 
-Run the development server:
+## Ejecutar en dev:
 
-```bash
-npm run dev
+1. Clonar el repositorio
+2. Crear una copia del ```.env.template```, renombrarlo a ```.ènv``` y cambiar las variables de entorno.
+3. Instalar las dependencias ```npm install```
+4. Levantar la base de datos ```docker compose up -d```
+5. Ejecutar el proyecto ```npm run dev```  - Ingresar a [http://localhost:3000](http://localhost:3000) 
 
-```
-Open [http://localhost:3000](http://localhost:3000) 
-
-
-## Tecnologias aplicadas:
-
-[React Icons](https://react-icons.github.io/react-icons/), 
-[Zustand](https://zustand-demo.pmnd.rs/), 
-[clsx](https://nextjs.org/learn-pages-router/basics/assets-metadata-css/styling-tips), 
-[Swiper](https://swiperjs.com/), 
 
 
