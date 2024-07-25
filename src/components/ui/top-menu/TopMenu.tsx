@@ -12,7 +12,6 @@ export const TopMenu = () => {
 
   const openSideMenu = useUIStore( state => state.openSideMenu );
 
-
   return (
     <nav className='flex justify-between items-center w-full'>
 
