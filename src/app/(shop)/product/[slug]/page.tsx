@@ -6,6 +6,7 @@ import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelecto
 import { titleFont } from "@/config/font";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { AddToCart } from "./ui/AddToCart";
 
 
 interface Props {
@@ -15,32 +16,27 @@ interface Props {
 }
 
 
+    export async function generateMetadata( { params }: Props,  parent: ResolvingMetadata ): Promise<Metadata> {
+      // read route params
+      const slug = params.slug
+    
+      // fetch data
+      const product = await getProductBySlug( slug )
+    
+      // optionally access and extend (rather than replace) parent metadata
+      // const previousImages = (await parent).openGraph?.images || []
+    
+      return {
+        title: product?.title ?? 'producto no encontrado',
+        description: product?.description ?? ' ',
+        openGraph: {
+          title: product?.title ?? 'producto no encontrado',
+          description: product?.description ?? ' ',
+          images: [ `/products/${ product?.images[1] }` ], // https://misitio.com/products/image.png...
+        },
+      }
+    }
  
-export async function generateMetadata( { params }: Props,  parent: ResolvingMetadata ): Promise<Metadata> {
-  // read route params
-  const slug = params.slug
- 
-  // fetch data
-  const product = await getProductBySlug( slug )
- 
-  // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
- 
-  return {
-    title: product?.title ?? 'producto no encontrado',
-    description: product?.description ?? ' ',
-    openGraph: {
-      title: product?.title ?? 'producto no encontrado',
-      description: product?.description ?? ' ',
-      images: [ `/products/${ product?.images[1] }` ], // https://misitio.com/products/image.png...
-    },
-  }
-}
- 
-export default function Page({ params, searchParams }: Props) {}
-
-
-
 
 export default async function ProductPage({ params }: Props) {
 
@@ -77,14 +73,7 @@ export default async function ProductPage({ params }: Props) {
 
         <p className="text-lg mb-5"> ${product.price} </p>
 
-        {/* selector de talle */}
-        <SizeSelector selectedSize={ product.sizes[0] } availableSizes={ product.sizes } />
-
-        {/* selector de cantidad */}
-        <QuantitySelector quantity={ 1 } />
-
-        {/* BUTTON */}
-        <button className="btn-primary my-5"> Agregar al carrito </button>
+        <AddToCart product={ product }/>
 
         {/* descripcion */}
         <h3 className="font-bold text-sm"> Descripción </h3>
