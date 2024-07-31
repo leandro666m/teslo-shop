@@ -6,11 +6,11 @@ import { useEffect, useState } from "react"
 
 
 interface Props {
-slug: string
+    slug: string
 }
 
 
-export const StockLabel = ( { slug }: Props) => {
+export const StockLabel = ({ slug }: Props) => {
 
     const [stock, setStock] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
@@ -21,15 +21,26 @@ export const StockLabel = ( { slug }: Props) => {
     }, [])
 
     const getStock = async () => {
-        const inStock = await getStockBySlug( slug )
-
-        setStock( inStock )
+        const inStock = await getStockBySlug(slug)
+        setStock(inStock)
+        setIsLoading(false)
     }
 
 
     return (
-        <h1 className={`${titleFont.className} antialiased font-bold text-lg `}>
-            Stock: { stock }
-        </h1>
+        <>
+            {
+                isLoading ? (
+                    <h1 className='antialiased bg-gray-200 animate-pulse' >
+                        &nbsp;
+                    </h1>
+                ) : (
+                    <h1 className={`${titleFont.className} antialiased font-bold text-lg `}>
+                        Stock: {stock}
+                    </h1>
+
+                )
+            }
+        </>
     )
 }
