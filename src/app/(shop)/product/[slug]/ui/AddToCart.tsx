@@ -32,7 +32,7 @@ export const AddToCart = ( { product}: Props ) => {
             title: product.title,
             price: product.price,
             quantity: quantity,
-            Size: size,
+            size: size,
             image: product.images[0]
         }
 

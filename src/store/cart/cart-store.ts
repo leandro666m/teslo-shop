@@ -8,12 +8,16 @@ interface State {
     cart: CartProduct[];
 
     getTotalItems: () => number;
+    getSummaryInformation: () => {  
+        subTotal: number;
+        tax: number;
+        total: number;
+        itemsInCart: number; };
 
     addProductToCart: (product: CartProduct) => void;
-    // updatedCartProducts: ( product: CartProduct ) => void;
-    // removeProductFromCart
+    updateProductQuantity: ( product: CartProduct, quantity: number ) => void;
+    removeProduct: ( product: CartProduct ) => void;
 }
-
 
 
 
@@ -25,11 +29,20 @@ export const useCartStore = create<State>() (
 
             cart: [],
 
-
             // metodos
             getTotalItems: () => {
                 const { cart } = get();
                 return cart.reduce( (total, item) => total + item.quantity, 0 )
+            },
+
+            getSummaryInformation: () => { 
+                const { cart } = get();
+                const subTotal = cart.reduce( (subTotal, product) => (product.quantity * product.price) + subTotal , 0 )
+                const tax = subTotal * 0.21;
+                const total = subTotal + tax;
+                const itemsInCart = cart.reduce( (total, item) => total + item.quantity , 0 )
+                
+                return { subTotal, tax, total, itemsInCart }
             },
 
             addProductToCart: (product: CartProduct) => {
@@ -37,7 +50,7 @@ export const useCartStore = create<State>() (
 
                 // revisar si en el carrito existe un prod con la talle seleccionada
                 const productInCart = cart.some(
-                    (item) => (item.id === product.id && item.Size === product.Size)
+                    (item) => (item.id === product.id && item.size === product.size)
                 )
 
                 if (!productInCart) {
@@ -47,7 +60,7 @@ export const useCartStore = create<State>() (
 
                 // 2. se que el producto existe por talle, tengo q actualizar la cantidad
                 const updatedCartProducts = cart.map((item) => {
-                    if (item.id === product.id && item.Size === product.Size) {
+                    if (item.id === product.id && item.size === product.size) {
                         return {
                             ...item,
                             quantity: (item.quantity + product.quantity)
@@ -61,7 +74,30 @@ export const useCartStore = create<State>() (
                 set({ cart: updatedCartProducts })
 
 
-            }
+            },
+
+            updateProductQuantity: (product: CartProduct, quantity: number) => {
+                const { cart } = get();
+
+                const updatedCartProducts = cart.map((item) => {
+                    if ( item.id === product.id && item.size === product.size){
+                        return { ...item, quantity: quantity }
+                    }
+                    return item
+                } )
+            
+                set({ cart: updatedCartProducts })
+            },
+
+            removeProduct: ( product: CartProduct ) => {
+                const { cart } = get();
+
+                const updatedCartProducts = cart.filter( 
+                    (item) => item.id !== product.id || item.size !== product.size
+                )
+            
+                set({ cart: updatedCartProducts })
+            },
 
 
         }  ),
