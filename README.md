@@ -21,7 +21,9 @@ SSR, SSG, CSR, ISR, Middlewares, Rutas dinámicas, Next API, Next Auth, Material
 [Swiper](https://swiperjs.com/), 
 [Prisma](https://www.prisma.io/)
 [ts-node] ```npm i -D ts-node``` //para poder ejecutar codigo typescript en node
-
+[next-auth] ```npm i next-auth@beta```
+[zod] ```npm i zod``` //validacion de formularios
+[bcryptjs] ```npm i bcryptjs``` // encriptacion de passwords
 
 ## Getting Started
 

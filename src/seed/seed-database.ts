@@ -5,18 +5,24 @@ async function main() {
 
     // 1. borrar registros previos
     // await Promise.all([
+        await prisma.user.deleteMany();
+
         await prisma.productImage.deleteMany();
         await prisma.product.deleteMany();
         await prisma.category.deleteMany();
 
     // ])
 
-    const { categories, products } = initialData;
+    const { categories, products, users } = initialData;
+
+    // Usuarios
+    await prisma.user.createMany({
+        data: users
+    });
+
 
     // Categorias
-
     const categoriesData = categories.map((name) => ({ name }));
-
 
     await prisma.category.createMany({
         data: categoriesData
@@ -53,9 +59,6 @@ async function main() {
         await prisma.productImage.createMany({
             data: imagesData
         })
-
-
-
 
     });
 
