@@ -12,14 +12,16 @@ import { IoInformationOutline } from 'react-icons/io5';
 
 export const LoginForm = () => {
 
-    const router = useRouter()
+    // const router = useRouter()
     const [state, dispatch] = useFormState(authenticate, undefined);
+    console.log("🍿 state", state);
    
     
     useEffect(() => {
       if ( state === 'Success') {
         // redireccionar
-        router.replace('/')
+        // router.replace('/')
+        window.location.replace('/') // uso éste y no router para que al iniciar sesión se recargue la página yse carguen bien todas las opc de menú
       }
     
     }, [ state ])
@@ -38,7 +40,8 @@ export const LoginForm = () => {
 
 
             <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true" >
-                { String(state) !== "CredentialsSignin" && (
+            { 
+                state !== undefined && String(state) !== 'CredentialSignIn' && (
                     <div className='flex flex-row mb-2'>
                         <IoInformationOutline className="h-5 w-5 text-red-500" />
                         <p className="text-sm text-red-500"> Verifique el usuario y contraseña. </p>

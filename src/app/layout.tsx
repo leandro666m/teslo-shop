@@ -3,6 +3,7 @@ import { inter } from "@/config/font";
 
 
 import "./globals.css";
+import { Provider } from "@/components";
 
 
 export const metadata: Metadata = {
@@ -18,9 +19,13 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
 
 
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={inter.className}>
-        {children}
+        <Provider>
+        
+          {children}
+
+        </Provider>
       </body>
     </html>
   );

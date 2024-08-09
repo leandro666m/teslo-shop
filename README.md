@@ -24,6 +24,8 @@ SSR, SSG, CSR, ISR, Middlewares, Rutas dinámicas, Next API, Next Auth, Material
 [next-auth] ```npm i next-auth@beta```
 [zod] ```npm i zod``` //validacion de formularios
 [bcryptjs] ```npm i bcryptjs``` // encriptacion de passwords
+[React Hook Form](https://react-hook-form.com/get-started) ```npm install react-hook-form``` // encriptacion de passwords
+
 
 ## Getting Started
 
