@@ -7,8 +7,8 @@ export default async function CheckoutLayout( { children }: { children: React.Re
     const session = await auth();
 
     if ( !session?.user) {
-        // redirect("/auth/logint?returnTo=/perfil");
-        redirect("/");
+        // redirect("/auth/login?returnTo=/perfil");
+        redirect("/auth/login");
     }
 
 

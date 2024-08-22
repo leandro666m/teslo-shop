@@ -3,21 +3,21 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 
-interface State {
+        interface State {
 
-    cart: CartProduct[];
+            cart: CartProduct[];
 
-    getTotalItems: () => number;
-    getSummaryInformation: () => {  
-        subTotal: number;
-        tax: number;
-        total: number;
-        itemsInCart: number; };
+            getTotalItems: () => number;
+            getSummaryInformation: () => {  
+                subTotal: number;
+                tax: number;
+                total: number;
+                itemsInCart: number; };
 
-    addProductToCart: (product: CartProduct) => void;
-    updateProductQuantity: ( product: CartProduct, quantity: number ) => void;
-    removeProduct: ( product: CartProduct ) => void;
-}
+            addProductToCart: (product: CartProduct) => void;
+            updateProductQuantity: ( product: CartProduct, quantity: number ) => void;
+            removeProduct: ( product: CartProduct ) => void;
+        }
 
 
 
